@@ -26,8 +26,13 @@ public class MongoTemplateDecorator {
         convertMapNullValuesToFallback(replacementMap);
 
         String populatedInfoToSave = populatedTemplate.populate(replacementMap, templateName);
-        BasicDBObject basicDBObject = BasicDBObject.parse(populatedInfoToSave);
-        mongoTemplate.insert(basicDBObject, collectionName);
+        String document = BasicDBObject.parse(populatedInfoToSave).toJson();
+
+        mongoTemplate.insert(document, collectionName);
+    }
+
+    public MongoTemplate getActual() {
+        return this.mongoTemplate;
     }
 
     private void convertMapNullValuesToFallback(Map<String, Object> replacementMap) {

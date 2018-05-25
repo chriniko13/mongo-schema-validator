@@ -40,9 +40,13 @@ public class App implements CommandLineRunner {
 
 
         // --- 2nd example ---
-        studentService.store(new Student(UUID.randomUUID().toString(),
+        String id = UUID.randomUUID().toString();
+        studentService.store(new Student(id,
                 "bruno",
                 null, "the best dog"));
+
+        Student student = studentService.find(id);
+        System.out.println("student = " + student);
 
     }
 }
