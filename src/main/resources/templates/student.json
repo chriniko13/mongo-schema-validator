@@ -1,0 +1,7 @@
+{
+  "_id": "${id}",
+  "pojoClass": "${pojoClass}",
+  "firstname": "${firstname}",
+  "initials": "${initials}",
+  "surname": "${surname}"
+}
